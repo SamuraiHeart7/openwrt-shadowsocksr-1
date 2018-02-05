@@ -3,7 +3,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=shadowsocksr-libev
-PKG_VERSION:=2018-01-20
+PKG_VERSION:=2018-01-20-Tiny
 PKG_RELEASE:=bc1bbecc49ab5a9afb4ab7076f0d9359dc0493d1
 
 PKG_SOURCE_PROTO:=git
@@ -43,9 +43,7 @@ CONFIGURE_ARGS += --disable-ssp --disable-documentation --disable-assert --with-
 
 define Package/shadowsocksr-libev/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-local $(1)/usr/bin/ssr-local
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/ss-redir $(1)/usr/bin/ssr-redir
-	$(LN) ssr-local $(1)/usr/bin/ssr-tunnel
 endef
 
 $(eval $(call BuildPackage,shadowsocksr-libev))
